@@ -1,1 +1,1 @@
-# myclojureprojects
+# Clojure Projects
