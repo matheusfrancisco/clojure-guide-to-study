@@ -1,7 +1,11 @@
 (ns firstproject.core-test
-  (:require [clojure.test :refer :all]
-            [firstproject.core :refer :all]))
+  (:require [clojure.test :refer [is deftest testing]]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+
+(deftest my-test
+  (testing "1+ 1= 2"
+    (is (=(+ 1 1) 2)))
+
+  (testing "Ensure 2- 1 = 1"
+    (is (= (- 2 1) 1)))
+   )
