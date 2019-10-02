@@ -21,3 +21,11 @@
 
 @acct1
 @acct2
+
+
+(def my-agent (agent 0 :validator #(>= % 0) :error-mode :continue
+                     :error-handler println))
+
+(send my-agent inc)
+(restart-agent my-agent 0)
+@my-agent 2
