@@ -1,6 +1,10 @@
 (ns mywebapp.core
-  (:require [ring.adapter.jetty :as jetty]
+  (:require [compojure.core :refer [defroutes GET POST]]
+            [ring.adapter.jetty :as jetty]
             [ring.middleware.params :refer [wrap-params]]))
+
+(defroutes myapproutes
+  (GET "/" [] "Hello from Compojure"))
 
 (defn myapp [request]
   (str "Hello, " (get (:params request) "name")))
@@ -20,4 +24,4 @@
       wrap-params))
 
 (defn -main []
-  (jetty/run-jetty handler {:port 3000}))
+  (jetty/run-jetty myapproutes {:port 3000}))
