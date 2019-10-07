@@ -1,6 +1,6 @@
-(ns mywebb.core-test
+(ns myweb.core-test
   (:require [clojure.test :refer :all]
-            [mywebb.core :refer :all]))
+            [myweb.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
