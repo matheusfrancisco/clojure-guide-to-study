@@ -37,3 +37,18 @@
 (#(str %1 " and " %2) "Matheus" "Mayara")
 ; => Matheus and Mayara
 
+(#(identity %&) 1 "blag" :map)
+;=> (1 "blag" ;map)
+
+
+;Returning Functions
+
+(defn inc-maker
+  "Create a custom incrementor"
+  [inc-by]
+  #(+ % inc-by))
+
+(def inc2 (inc-maker 2))
+(inc2 2)
+; => 4
+
