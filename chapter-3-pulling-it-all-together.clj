@@ -43,3 +43,15 @@
     (println "Goodbye!")
     (recur (inc iteration))))
 
+
+(defn some-join [coll result]
+          (if (= 1 (count coll)) (str result (first coll))
+            (do
+              (println result)
+              (recur (rest coll) (str result (first coll) ", ")))))
+
+(some-join ["hello" "world" "love" "coding"] "Words: ")
+
+(if (= 1 (count ["h"])) "oi2" 
+  "oi")
+
