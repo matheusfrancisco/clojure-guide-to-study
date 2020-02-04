@@ -129,8 +129,82 @@
 ; => (4 5 6 7 8 9 10)
 
 
+;Their cousins take-while and drop-while are a bit more interesting.
+;Each takes a predicate function (a function whose return value is evaluated
+;for truth or falsity) to determine when it should stop taking or dropping.
+;Suppose, for example, that you had a vector representing entries in your
+;“food” journal. Each entry has the year, month, day, and what you ate. To
+;preserve space, we’ll only include a few entries:
+
+(def food-journal
+   [ {:month 1 :day 1 :human 5.3 :critter 2.3}
+    {:month 1 :day 2 :human 5.1 :critter 2.0}
+    {:month 2 :day 1 :human 4.9 :critter 2.1}
+    {:month 2 :day 2 :human 5.0 :critter 2.5}
+    {:month 3 :day 1 :human 4.2 :critter 3.3}
+    {:month 3 :day 2 :human 4.0 :critter 3.8}
+    {:month 4 :day 1 :human 3.7 :critter 3.9}
+    {:month 4 :day 2 :human 3.7 :critter 3.6}])
+
+;This example uses the anonymous function #(< (:month %) 3) to test
+;whether the journal entry’s month is out of range:
+
+;When take-while reaches the first March entry, the anonymous
+;function returns false, and take-while returns a sequence of every
+;element it tested until that point
 
 
+(take-while #(< (:month %) 3) food-journal)
+;=>({:month 1, :day 1, :human 5.3, :critter 2.3}
+; {:month 1, :day 2, :human 5.1, :critter 2.0}
+; {:month 2, :day 1, :human 4.9, :critter 2.1}
+; {:month 2, :day 2, :human 5.0, :critter 2.5})
 
 
+;the same to drop-while
 
+(drop-while #(< (:month %) 3) food-journal)
+
+; =>({:month 3, :day 1, :human 4.2, :critter 3.3}
+; {:month 3, :day 2, :human 4.0, :critter 3.8}
+; {:month 4, :day 1, :human 3.7, :critter 3.9}
+; {:month 4, :day 2, :human 3.7, :critter 3.6})
+;
+
+(take-while #(< (:month %) 4) (drop-while #(< (:month %) 2) food-journal))
+; by using take-while and drop while together, you can get data for just feb and march:
+;({:month 2, :day 1, :human 4.9, :critter 2.1}
+; {:month 2, :day 2, :human 5.0, :critter 2.5}
+; {:month 3, :day 1, :human 4.2, :critter 3.3}
+; {:month 3, :day 2, :human 4.0, :critter 3.8})
+
+;=>This example uses drop-while to get rid of the January entries, and
+;then it uses take-while on the result to keep taking entries until it reaches
+;the first April entry
+;
+
+;filter and some
+;Using filter to return all elements of a sequence that test true for a predicate function. Here
+; are the juornal entries where human consumption is less than five liters
+
+(filter #(< (:human %) 5) food-journal)
+;({:month 2, :day 1, :human 4.9, :critter 2.1}
+; {:month 3, :day 1, :human 4.2, :critter 3.3}
+; {:month 3, :day 2, :human 4.0, :critter 3.8}
+; {:month 4, :day 1, :human 3.7, :critter 3.9}
+; {:month 4, :day 2, :human 3.7, :critter 3.6})
+
+(filter #(< (:month %) 3) food-journal)
+;this use is perfectly fine, but filter can end up processing all of your
+;data,which isn't always necessary.
+
+;Some
+; The some function does that, returning the
+;first truthy value (any value that’s not false or nil) returned by a predicate 
+;function:
+
+(some #(> (:critter %) 5) food-journal)
+; => nil
+
+(some #(> (:critter %) 3) food-journal)
+; => true
