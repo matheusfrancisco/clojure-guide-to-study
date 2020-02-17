@@ -208,3 +208,95 @@
 
 (some #(> (:critter %) 3) food-journal)
 ; => true
+
+
+;Sort and sort-by
+(sort [3 5 4])
+; =>  (3 4 5)
+
+(sort-by count ["aaa" "c" "bb"])
+;=> ("c" "bb" "aaa")
+
+;concat
+(concat [1 2][3 4])
+;=>(1 2 3 4)
+
+
+; Lazy seqs
+; Many functions, incluiding map and filter, return a lazy seq. A lazy seq is a seq whose
+; members aren't computed until you try to acess them. Computing a seq's members is called realizing the seq.
+
+; Demonstring Lazyy Seq Efficient
+
+(def vampire-database
+  {0 {:makes-blood-puns? false, :has-pulse? true :name "McFishwich"}
+  1 {:makes-blood-puns? false, :has-pulse? true :name "McMackson"}
+  2 {:makes-blood-puns? true, :has-pulse? false :name "Damon Salvatore"}
+  3 {:makes-blood-puns? true, :has-pulse? true :name "Mickey Mouse"}})
+
+;
+(defn vampire-related-details
+  [social-security-number]
+  (Thread/sleep 1000)
+  (get vampire-database social-security-number))
+
+(defn vampire?
+  [record]
+  (and (:makes-blood-puns? record)
+       (not (:has-pulse? Record))
+        record))
+
+(defn identify-vampire
+  [social-security-number]
+  (first (filter vampire?
+                 (map vampire-related-details social-security-number))))
+
+(time (vampire-related-details 0))
+; => "Elapsed time: 1001.042 msecs"
+; => {:name "McFishwich", :makes-blood-puns? false, :haspulse? true}
+
+;You have a function, vampire-related-details, which takes one
+;second to look up an entry from the database. Next, you have a function,
+;vampire?, which returns a record if it passes the vampire test; otherwise, it
+;returns false. Finally, identify-vampire maps Social Security numbers
+;to database records and then returns the first record that indicates
+;vampirism.
+
+
+; Infinite Sequences
+
+(concat (take 8 (repeat "na")) ["Batman!"])
+; => ("na" "na" "na" "na" "na" "na" "na" "na" "Batman!")
+
+
+;You can also use repeatedly, which will call the provided function to
+;generate each element in the sequence:
+
+(take 3 (repeatedly (fn [] (rand-int 10))))
+
+;Here, the lazy sequence returned by repeatedly generates every new
+;element by calling the anonymous function (fn [] (rand-int 10)),
+;which returns a random integer between 0 and 9. If you run this in your
+;REPL, your result will most likely be different from this one
+
+
+;A lazy seq’s recipe doesn’t have to specify an endpoint. Functions like
+;first and take, which realize the lazy seq, have no way of knowing what
+;will come next in a seq, and if the seq keeps providing elements, well,
+;they’ll just keep taking them. You can see this if you construct your own
+;infinite sequence:
+
+defn (even-numbers
+  ([] (even-numbers 0))
+  ([n] (cons n (lazy-seq (even-numbers (+ n 2))))))
+
+(take 10 (even-numbers))
+; => (0 2 4 6 8 10 12 14 16 18)
+
+;cons returns a new list with an element appended to
+
+
+; The Collections Abstraction
+; verctors, maps, lists, and sets
+;count, empty?, every?
+
