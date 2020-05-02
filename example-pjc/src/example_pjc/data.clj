@@ -44,8 +44,8 @@
 
 
 (defn -main [& args]
-  (println (Date.))
   (ShiverMeTimbers/main)
+  (println (Date.))
   (ShiverMeTimbers/thisMain))
 ;{:customer-id "cid-1",
 ;  :customer "Customer 1",
