@@ -47,3 +47,36 @@
 ;; Problema de tipos
 ;; Mapa doesn't guarantee things for us (for people)
 ;; We've to guarantee things like type
+
+(defrecord Paciente [id nome nascimento])
+
+(println (->Paciente "15" "Matheus" "9/9/1994"))
+; conjure/out | #hospital.aula1.Paciente{:id 15, :nome Matheus, :nascimento 9/9/1994}
+(pprint (->Paciente "15" "Matheus" "9/9/1994"))
+; conjure/out | {:id "15", :nome "Matheus", :nascimento "9/9/1994"}
+
+(pprint (Paciente. 15 "Xico" "9/9/1994"))
+; conjure/out | {:id 15, :nome "Xico", :nascimento "9/9/1994"}
+
+(pprint (map->Paciente {:id 15 :nome "Xico" :nascimento "9/91994"}))
+; conjure/out | {:id 15, :nome "Xico", :nascimento "9/91994"}
+;#hospital.aula1.Paciente{:id 15, :nome "Xico", :nascimento "9/91994"}
+
+(let [xico (->Paciente 15 "Xico" "9/9/1994")]
+  (println (:id xico))
+  (println (vals xico))
+  (println (class xico))
+  (println (record? xico)))
+; conjure/out | 15
+; conjure/out | (15 Xico 9/9/1994)
+; conjure/out | hospital.aula1.Paciente
+; conjure/out | true
+
+(pprint (map->Paciente {:id 15 :nome "Xico" :nascimento "9/91994" :cpf "22222"}))
+; conjure/out | {:id 15, :nome "Xico", :nascimento "9/91994", :cpf "22222"}
+
+;(pprint (Paciente "Xico" "9/9/1994"))
+(pprint (assoc (Paciente. nil "Xico" "9/9/1994") :id 38))
+; conjure/out | {:id 38, :nome "Xico", :nascimento "9/9/1994"}
+(pprint (class (assoc (Paciente. nil "Xico" "9/9/1994") :id 38)))
+; conjure/out | hospital.aula1.Paciente
