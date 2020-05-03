@@ -59,16 +59,6 @@
 
 (valor-descontado 100)
 
-
-
-
-
-
-
-
-
-
-
 (defn valor-descontado
   "Retorna o valor com desconto de 10%."
   [valor-bruto]
@@ -79,12 +69,6 @@
   )
 
 (valor-descontado 100)
-
-
-
-
-
-
 
 
 
@@ -136,13 +120,6 @@
 (class 90N)
 (class 90M)
 
-
-
-
-
-
-
-
 (defn valor-descontado
   "Retorna o valor com desconto de 10%."
   [valor-bruto]
@@ -152,9 +129,6 @@
     (- valor-bruto desconto)))
 
 (valor-descontado 100)
-
-
-
 
 
 (> 500 100)
@@ -168,14 +142,6 @@
   (println "maior")
   (println "menor ou igual"))
 
-
-
-
-
-
-
-
-
 (defn valor-descontado
   "Retorna o valor com desconto de 10% se o valor bruto for estritamente maior que 100."
   [valor-bruto]
@@ -188,11 +154,6 @@
 (valor-descontado 1000)
 
 (valor-descontado 1000)
-
-
-
-
-
 
 (defn valor-descontado
   "Retorna o valor com desconto de 10% se o valor bruto for estritamente maior que 100."

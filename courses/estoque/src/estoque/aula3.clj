@@ -1,7 +1,8 @@
 (ns estoque.aula3)
 
 (defn valor-descontado
-  "Retorna o valor com desconto de 10% se o valor bruto for estritamente maior que 100."
+  "Retorna o valor com desconto de 10% se o valor bruto for
+  estritamente maior que 100."
   [valor-bruto]
   (if (> valor-bruto 100)
     (let [taxa-de-desconto (/ 10 100)
@@ -22,7 +23,6 @@
     false))
 
 (println (aplica-desconto? 100))
-
 
 (defn valor-descontado
   "Retorna o valor com desconto de 10% se o valor bruto for estritamente maior que 100."
@@ -89,7 +89,7 @@
 
 (defn mais-caro-que-100? [valor-bruto] (> valor-bruto 100))
 
-(println "funcao como sem nome")
+(println "funcao sem nome anonimo")
 (println (valor-descontado-aplica (fn [valor-bruto] (> valor-bruto 100)) 1000))
 (println (valor-descontado-aplica (fn [v] (> v 100)) 1000))
 (println (valor-descontado-aplica #(> %1 100) 1000))
