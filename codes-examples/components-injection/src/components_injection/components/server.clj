@@ -8,7 +8,7 @@
 
 
 (defn create-server [port]
-  (run-jetty (-> #'r/router
+  (run-jetty (-> #'components-injection.components.routers/router
                  (wrap-json-body {:keywords? true})
                  (wrap-json-response)) {:port port}))
 
