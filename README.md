@@ -23,9 +23,13 @@ send me recomendation: matheusmachadoufsc@gmail.com
 ### Some POC to understand more about clojure
 
 [api-rest-todo](./codes-examples/api-example)
+
 [components-injection-clojure](./codes-examples/components-injection)
+
 [code in clojure](./codes)
+
 [alura courses](./courses)
+
 [Use java code in clojure project](./example-pjc)
 
 
