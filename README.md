@@ -3,6 +3,9 @@
 
 This is my guide to study Clojure.
 
+Always learning new things about functional programming...
+
+send me recomendation: matheusmachadoufsc@gmail.com
 
 ## Recommended books
  - Clojure for the brave em true
@@ -12,21 +15,17 @@ This is my guide to study Clojure.
   - Alura Trilha Clojure (non-free)
 
 
-### Implementations in clojure About Books or Courses.
-
 
 
 ## Clojure for the Brave and True - ebook.
+  * [click here to see implementation](./books-implementation/clojure-for-the-brave-and-true)
 
-- [x]  Part II Language Fundamentals 
-    - [x] Chapter 3 Do things Crash Course.
-    - [x] Chapter 4 Core Functions in Depth.
-    - [x] Chapter 5 Functonal Programming.
-    - [x] Chapter 6 Organizing Your Project: A Librarian's Tale.
-    - [x] Chpater 7 Clojure Aclchemy Reading, Evaluation and Macros
-    - [x] Chpater 8 Writing Macros
+### Some POC to understand more about clojure
 
-- [ ]  Part III Advanced concepts
-    - [x] Chapter 9 The Sacred Art of Concurrent and Parallel Programming
-    - [ ] Chapter 10 Atoms, Refs, Vars, and Cuddle Zombies
+[api-rest-todo](./codes-examples/api-example)
+[components-injection-clojure](./codes-examples/components-injection)
+[code in clojure](./codes)
+[alura courses](./courses)
+[Use java code in clojure project](./example-pjc)
+
 
