@@ -1,11 +1,4 @@
-# Clojure Projects
-
-
-This is my guide to study Clojure.
-
-Always learning new things about functional programming...
-
-send me recomendation: matheusmachadoufsc@gmail.com
+# Experimentals code is a place where I use to put courses code I had study
 
 ## Recommended books
  - Clojure for the brave em true
